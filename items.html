@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hat-Trick Gifts</title>
+   <link rel="icon" type="image/png" href="images__2_-removebg-preview.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background-color: #4e1f1f;
+      color: white;
+    }
+    header {
+      background: linear-gradient(to right, #f8e3a0, #f6c678);
+      padding: 10px;
+      color: #5a1c1c;
+      font-weight: bold;
+      font-size: 1.2em;
+      text-align: center;
+    }
+    .gift-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      padding: 10px;
+    }
+    .gift {
+      background-color: #fff;
+      color: black;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      transition: transform 0.2s;
+    }
+    .gift img {
+      width: 100%;
+      height: auto;
+    }
+    .gift-content {
+      padding: 10px;
+    }
+    .gift-title {
+      font-size: 1em;
+      font-weight: bold;
+    }
+    .gift-desc {
+      font-size: 0.9em;
+      color: #444;
+      margin: 5px 0;
+    }
+    .gift-free {
+      color: #e74c3c;
+      font-weight: bold;
+    }
+    .gift-button {
+      background-color: orange;
+      color: white;
+      border: none;
+      padding: 8px;
+      width: 100%;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 0 0 10px 10px;
+    }
+    .gift-button:disabled {
+      background-color: grey;
+    }
+    .footer {
+      padding: 15px;
+      text-align: center;
+      background: #ffb347;
+      color: black;
+      font-weight: bold;
+      position: sticky;
+      bottom: 0;
+    }
+  </style>
+</head>
+<body>
+ 
+
+<header>🎁 Last Step! Pick your <span style="color: orange;">#1</span> Gift</header>
+
+<div class="gift-grid" id="giftGrid">
+  <!-- Example item -->
+</div>
+
+<div class="footer">
+  
+</div>
+
+<script>
+const gifts = [
+  {
+    title: "Remote Controle Buny Light",
+    desc: "High-quality paint, best remote, compact case.with battery.",
+    img: "buny.jpg",
+    firstClickLink: "https://www.profitableratecpm.com/ut6fz30k3?key=1955e28b36d6fcd1ab11dc782d407ffe",
+    secondClickLink: "Adrees.html"
+  },
+  {
+    title: "Wireless Earbuds - HD Sterreo",
+    desc: "Best volume.USB-c charging.Wirless Connectivity",
+    img: "ear.jpg",
+     firstClickLink: "https://www.profitableratecpm.com/ut6fz30k3?key=1955e28b36d6fcd1ab11dc782d407ffe",
+    secondClickLink: "Adrees.html"
+  },
+  {
+    title: "Wirless speacker Table LAmp With RGB Lights",
+    desc: "Perfect for your room and table.",
+    img: "light.jpg",
+     firstClickLink: "https://www.profitableratecpm.com/ut6fz30k3?key=1955e28b36d6fcd1ab11dc782d407ffe",
+    secondClickLink: "Adrees.html"
+  },
+  {
+    title: "Realistic Artifical Bonsai Tree in small pot",
+    desc: "Portable and perfect for small spaces.",
+    img: "plant.jpg",
+     firstClickLink: "https://www.profitableratecpm.com/ut6fz30k3?key=1955e28b36d6fcd1ab11dc782d407ffe",
+    secondClickLink: "Adrees.html"
+  },
+   
+   {
+    title: "Motorcycle Helmet Adult Mororcycle for ATV. Enjoy your jurny",
+    desc: "Safe for your own rides.",
+    img: "helmet.jpg",
+    firstClickLink: "https://www.profitableratecpm.com/ut6fz30k3?key=1955e28b36d6fcd1ab11dc782d407ffe",
+    secondClickLink: "Adrees.html"
+  },
+   {
+    title: "Mini MIC for podcast",
+    desc: "Portable and perfect for small spaces.",
+    img: "mic.jpg",
+     firstClickLink: "https://www.profitableratecpm.com/ut6fz30k3?key=1955e28b36d6fcd1ab11dc782d407ffe",
+    secondClickLink: "Adrees.html"
+  },
+   {
+    title: "Mini Fridge for Snacks & Drinks",
+    desc: "Portable and perfect for small spaces.",
+    img: "fridge.jpg",
+     firstClickLink: "https://www.profitableratecpm.com/ut6fz30k3?key=1955e28b36d6fcd1ab11dc782d407ffe",
+    secondClickLink: "Adrees.html"
+    },
+ {
+  title: "Smart Fitness Tracker Watch",
+  desc: "Track your steps, heart rate.",
+  img: "watch.jpg",
+   firstClickLink: "https://www.profitableratecpm.com/ut6fz30k3?key=1955e28b36d6fcd1ab11dc782d407ffe",
+    secondClickLink: "Adrees.html"
+},
+{
+    title: "GENAI P2864 Over Ear Wirless Headphones",
+    desc: "Best sound experience. ",
+    img: "hrd.jpg",
+    firstClickLink: "https://www.profitableratecpm.com/ut6fz30k3?key=1955e28b36d6fcd1ab11dc782d407ffe",
+    secondClickLink: "Adrees.html"
+  },
+{
+  title: "Wireless Charging Pad",
+  desc: "Fast charging pad compatible with all Qi devices.",
+  img: "charger.jpg",
+   firstClickLink: "https://www.profitableratecpm.com/ut6fz30k3?key=1955e28b36d6fcd1ab11dc782d407ffe",
+    secondClickLink: "Adrees.html"
+},
+
+{
+  title: "Foldable Phone Stand",
+  desc: "Adjustable phone holder for desk or travel use.",
+  img: "stand.jpg",
+  firstClickLink: "https://www.profitableratecpm.com/ut6fz30k3?key=1955e28b36d6fcd1ab11dc782d407ffe",
+  secondClickLink: "Adrees.html"
+},
+{
+  title: "LED Clip-On Reading Light",
+  desc: "Perfect for night reading without disturbing others.",
+  img: "lamp.jpg",
+  firstClickLink: "https://www.profitableratecpm.com/ut6fz30k3?key=1955e28b36d6fcd1ab11dc782d407ffe",
+  secondClickLink: "Adrees.html"
+},
+{
+  title: "Waterproof Phone Pouch",
+  desc: "Protect your phone underwater and in rain.",
+  img: "phone pouch.jpg",
+  firstClickLink: "https://www.profitableratecpm.com/ut6fz30k3?key=1955e28b36d6fcd1ab11dc782d407ffe",
+  secondClickLink: "Adrees.html"
+},
+{
+  title: "Digital Alarm Clock with Mirror",
+  desc: "Modern design with LED display and mirror surface.",
+  img: "clock.jpg",
+  firstClickLink: "https://www.profitableratecpm.com/ut6fz30k3?key=1955e28b36d6fcd1ab11dc782d407ffe",
+  secondClickLink: "Adrees.html"
+},
+{
+  title: "Multifunctional Pen Tool",
+  desc: "Includes pen, stylus, screwdriver, and more.",
+  img: "pen.jpg",
+  firstClickLink: "https://www.profitableratecpm.com/ut6fz30k3?key=1955e28b36d6fcd1ab11dc782d407ffe",
+  secondClickLink: "Adrees.html"
+},
+{
+  title: "Phone Selfie Ring Light",
+  desc: "Perfect lighting for your selfies and videos.",
+  img: "ringlight.jpg",
+  firstClickLink: "https://www.profitableratecpm.com/ut6fz30k3?key=1955e28b36d6fcd1ab11dc782d407ffe",
+  secondClickLink: "Adrees.html"
+},
+{
+  title: "Mini Desk Vacuum Cleaner",
+  desc: "Clean crumbs and dust easily on your desk.",
+  img: "vacume.jpg",
+  firstClickLink: "https://www.profitableratecpm.com/ut6fz30k3?key=1955e28b36d6fcd1ab11dc782d407ffe",
+  secondClickLink: "Adrees.html"
+},
+{
+  title: "Cable Organizer Clips Set",
+  desc: "Keep your cables neat and tidy.",
+  img: "cable.jpg",
+  firstClickLink: "https://www.profitableratecpm.com/ut6fz30k3?key=1955e28b36d6fcd1ab11dc782d407ffe",
+  secondClickLink: "Adrees.html"
+},
+{
+  title: "Bluetooth Tracker Key Finder",
+  desc: "Never lose your keys again with smart tracking.",
+  img: "tracker.jpg",
+  firstClickLink: "https://www.profitableratecpm.com/ut6fz30k3?key=1955e28b36d6fcd1ab11dc782d407ffe",
+  secondClickLink: "Adrees.html"
+},
+{
+  title: "Screen Cleaning Spray with Cloth",
+  desc: "Compact bottle to clean your screens anytime.",
+  img: "cleaner.jpg",
+  firstClickLink: "https://www.profitableratecpm.com/ut6fz30k3?key=1955e28b36d6fcd1ab11dc782d407ffe",
+  secondClickLink: "Adrees.html"
+}
+
+];
+
+const selected = [];
+const maxSelect = 4;
+const grid = document.getElementById("giftGrid");
+const confirmBtn = document.getElementById("confirmBtn");
+
+gifts.forEach((gift, index) => {
+  let clickCount = 0;
+  const div = document.createElement("div");
+  div.className = "gift";
+  div.innerHTML = `
+    <img src="${gift.img}" alt="${gift.title}">
+    <div class="gift-content">
+      <div class="gift-title">${gift.title}</div>
+      <div class="gift-desc">${gift.desc}</div>
+      <div class="gift-free">Free</div>
+    </div>
+    <button class="gift-button" onclick="selectGift(${index}, this)">Free & Yours!</button>
+  `;
+
+
+  div.addEventListener("click", () => {
+    clickCount++;
+
+    if (clickCount === 1) {
+      
+      window.open(gift.firstClickLink, "_blank");
+    } else if (clickCount === 2) {
+     
+      window.open(gift.secondClickLink, "_blank");
+    }
+  });
+
+  grid.appendChild(div);
+});
+
+function selectGift(index, btn) {
+  if (selected.includes(index)) {
+    selected.splice(selected.indexOf(index), 1);
+    btn.textContent = "Free & Yours!";
+    btn.style.backgroundColor = "orange";
+  } else {
+    if (selected.length < maxSelect) {
+      selected.push(index);
+      btn.textContent = "Selected!";
+      btn.style.backgroundColor = "green";
+    }
+  }
+  confirmBtn.textContent = `Confirm Selection (${selected.length}/4)`;
+  confirmBtn.disabled = selected.length !== 4;
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spin for a Prize</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #000;
+      color: white;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    .step {
+      font-size: 1.5em;
+      margin-top: 20px;
+      font-weight: bold;
+      color: #fff799;
+    }
+
+    .progress-bar {
+      width: 90%;
+      margin: 10px auto;
+      height: 20px;
+      background: #333;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(to right, red, orange, yellow);
+      animation: fill 2s infinite alternate;
+    }
+
+    @keyframes fill {
+      0% { width: 20%; }
+      100% { width: 100%; }
+    }
+
+    .wheel-container {
+      position: relative;
+      margin: 20px auto;
+      width: 300px;
+      height: 300px;
+      background: url('https://i.imgur.com/s1kECqG.png') no-repeat center/contain; /* Replace with your actual wheel image */
+    }
+
+    .pointer {
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-bottom: 20px solid white;
+    }
+
+    .go-button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background-color: #ff4c4c;
+      color: white;
+      font-size: 1.2em;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 0 15px #ff4c4c;
+    }
+
+    .go-button:active {
+      transform: translate(-50%, -50%) scale(0.95);
+    }
+
+    .win-btn {
+      margin: 30px auto;
+      padding: 15px 30px;
+      font-size: 1.2em;
+      background: red;
+      border-radius: 50px;
+      border: none;
+      color: yellow;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 0 10px red;
+      display: none;
+      animation: pulse 1s infinite;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 10px red; }
+      50% { box-shadow: 0 0 20px yellow; }
+      100% { box-shadow: 0 0 10px red; }
+    }
+
+    .disclaimer {
+      font-size: 10px;
+      color: #333;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div class="step">Step 1: Spin for a prize</div>
+  <div class="progress-bar">
+    <div class="progress-fill"></div>
+  </div>
+
+  <div class="wheel-container">
+    <div class="pointer"></div>
+    <button class="go-button" onclick="spinWheel()">GO</button>
+  </div>
+
+  <button id="winBtn" class="win-btn" onclick="location.href='gifts.html'">Win My Gifts</button>
+
+  <div class="disclaimer">
+    This is for entertaining purposes only.
+  </div>
+
+  <script>
+    function spinWheel() {
+      const btn = document.querySelector('.go-button');
+      btn.disabled = true;
+      btn.textContent = '...';
+      btn.style.background = 'grey';
+
+      // simulate spin delay
+      setTimeout(() => {
+        document.getElementById('winBtn').style.display = 'inline-block';
+      }, 3000);
+    }
+  </script>
+</body>
+</html>

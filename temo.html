@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hat-Trick Gifts</title>
+  <link rel="icon" type="image/png" href="images__2_-removebg-preview.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #4e1f1f;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: start;
+      min-height: 100vh;
+    }
+
+    .title-bar {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 1.5rem;
+      color: #ffc107;
+      font-weight: bold;
+    }
+
+    .progress-bar {
+      width: 80%;
+      height: 24px;
+      background-color: #333;
+      border-radius: 12px;
+      margin: 15px auto;
+      overflow: hidden;
+      border: 1px solid #777;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      width: 70%;
+      background: linear-gradient(to right, red, orange, yellow, white);
+      animation: fill 2s infinite alternate;
+    }
+    
+
+    
+    @keyframes fill {
+      0% { width: 20%; }
+      100% { width: 90%; }
+    }
+
+    .wheel-container {
+      position: relative;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      margin-top: 20px;
+      background: #fff3e0;
+      border: 10px solid #f9a825;
+      box-shadow: 0 0 30px #ffd600;
+      overflow: hidden;
+    }
+
+    .wheel {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: conic-gradient(
+        #ff9800 0deg 45deg,
+        #fff 45deg 90deg,
+        #ff9800 90deg 135deg,
+        #fff 135deg 180deg,
+        #ff9800 180deg 225deg,
+        #fff 225deg 270deg,
+        #ff9800 270deg 315deg,
+        #fff 315deg 360deg
+      );
+      position: relative;
+      transition: transform 4s ease-out;
+    }
+
+    .wheel span {
+      position: absolute;
+      width: 100%;
+      text-align: center;
+      font-weight: bold;
+      font-size: 14px;
+      transform-origin: center;
+      color: #000;
+    }
+
+    .go-button {
+      width: 75px;
+      height: 75px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      border: 6px solid #ffccaa;
+      background: radial-gradient(circle at center, #ff7a00, #cc3300);
+      color: #fff;
+      font-weight: bold;
+      font-size: 22px;
+      cursor: pointer;
+      box-shadow: 0 0 20px #ffa500, inset 0 0 10px #cc3300;
+      text-shadow: 0 2px 2px #800000;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .indicator {
+      position: absolute;
+      top: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 15px solid transparent;
+      border-right: 15px solid transparent;
+      border-bottom: 25px solid red;
+      z-index: 10;
+    }
+
+    .bulbs {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .bulbs span {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      background: yellow;
+      border-radius: 50%;
+      animation: blink 1s infinite alternate;
+    }
+
+    @keyframes blink {
+      0% { opacity: 1; }
+      100% { opacity: 0.3; }
+    }
+.win-button {
+  margin-top: 30px;
+  background: linear-gradient(to bottom, #f04848, #c32424);
+  border-radius: 30px;
+  padding: 15px 40px;
+  font-size: 22px;
+  font-weight: bold;
+  color: #fff300;
+  border: 2px solid #ffcccc;
+  text-shadow: 1px 1px 3px #900;
+  box-shadow: 0 5px 20px rgba(255, 0, 0, 0.6);
+  font-family: 'Arial', sans-serif;
+  cursor: pointer;
+  
+}
+
+
+@keyframes glove-wiggle {
+  0% { transform: translateX(0) rotate(0deg); }
+  20% { transform: translateX(5px) rotate(5deg); }
+  40% { transform: translateX(-5px) rotate(-5deg); }
+  60% { transform: translateX(5px) rotate(5deg); }
+  80% { transform: translateX(-5px) rotate(-5deg); }
+  100% { transform: translateX(0) rotate(0deg); }
+}
+
+.glove-animate {
+  animation: glove-wiggle 1s infinite;
+}
+
+
+    .disclaimer {
+      font-size: 10px;
+      text-align: center;
+      color: #ccc;
+      padding: 10px;
+      max-width: 90%;
+    }
+  </style>
+</head>
+<body>
+  <div class="title-bar">Step 1: Spin for a prize</div>
+  <div class="progress-bar">
+    <div class="progress-bar-fill"></div>
+  </div>
+  <div class="wheel-container">
+    <div class="indicator"></div>
+    <div class="wheel" id="wheel">
+     
+    </div>
+    <div class="bulbs" id="bulbs"></div>
+    <button class="go-button" onclick="spinWheel()">GO</button>
+  </div>
+  <a href="items.html"><button class="win-button" >Win My Gifts</button></a>
+  <br>
+  <div class="disclaimer">
+    This interface is for illustrative purposes only. This is just for entertainment purposes. Every user has equal rights. If there is a problem please contact us from (gihanwikkramage@gmail.com) . Thank you...
+  <script>
+ setTimeout(function () {
+    document.querySelector('.win-button').classList.add('glove-animate');
+  }, 4000);
+</script>
+  <script>
+    
+    const bulbs = document.getElementById("bulbs");
+    const count = 24;
+    for (let i = 0; i < count; i++) {
+      const span = document.createElement("span");
+      const angle = (i * 360) / count;
+      const r = 145; 
+      const x = 150 + r * Math.cos(angle * Math.PI / 180);
+      const y = 150 + r * Math.sin(angle * Math.PI / 180);
+      span.style.left = `${x}px`;
+      span.style.top = `${y}px`;
+      bulbs.appendChild(span);
+    }
+
+    function spinWheel() {
+      const wheel = document.getElementById("wheel");
+      const spinTo = 360 * 5; 
+      wheel.style.transform = `rotate(${spinTo}deg)`;
+    }
+  </script>
+</body>
+</html>

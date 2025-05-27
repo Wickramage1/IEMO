@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hat-Trick Gifts</title>
+ <link rel="icon" type="image/png" href="images__2_-removebg-preview.png">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #fff;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h2 {
+      text-align: center;
+    }
+
+    form {
+      max-width: 400px;
+      margin: auto;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    .btn-save {
+      width: 100%;
+      background-color: orange;
+      color: white;
+      padding: 15px;
+      border: none;
+      border-radius: 25px;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .share-box {
+      display: none;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .share-btn {
+      margin-top: 30px;
+  background: linear-gradient(to bottom, #f04848, #c32424);
+  border-radius: 30px;
+  padding: 15px 40px;
+  font-size: 22px;
+  font-weight: bold;
+  color: #fff300;
+  border: 2px solid #ffcccc;
+  text-shadow: 1px 1px 3px #900;
+  box-shadow: 0 5px 20px rgba(255, 0, 0, 0.6);
+  font-family: 'Arial', sans-serif;
+  cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>To deliver the prize</h2>
+
+  <form id="addressForm">
+    <input type="text" placeholder="Email" required>
+    <input type="text" placeholder="Country" required>
+    <input type="text" placeholder="Province" required>
+    <input type="text" placeholder="District" required>
+    <input type="text" placeholder="City" required>
+    <input type="text" placeholder="Street/Home" required>
+    <input type="text" placeholder="Apt / Suite / Other (optional)">
+    <input type="text" placeholder="ZIP code" required>
+    <input type="tel" placeholder="Phone number" required>
+    <input type="text" placeholder="Name" required>
+
+  <div class="share-box" id="shareBox">
+    <p><strong>Your prize will be delivered once you share this link with five friends.</strong></p>
+    <button class="share-btn" onclick="shareLink()">Share</button>
+  </div>
+  <br>  
+  <button type="submit" class="btn-save">Save</button>
+  </form>
+
+
+  <script>
+    const form = document.getElementById('addressForm');
+    const shareBox = document.getElementById('shareBox');
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+      alert('Share this link to your 5 friends!');
+      shareBox.style.display = 'block';
+    });
+    function shareLink() {
+  const shareData = {
+    title: 'Join and Get Gifts!',
+    text: 'Click this link and get amazing gifts 🎁',
+    url: 'https://example.com/your-link-here' 
+  };
+
+  if (navigator.share) {
+    navigator.share(shareData)
+      .then(() => {
+        console.log('Shared successfully');
+        alert('Saved ✅'); 
+      })
+      .catch((err) => {
+        console.error('Error sharing:', err);
+      });
+  } else {
+    alert("Your device doesn't support sharing 😢");
+  }
+}
+
+    function shareLink() {
+      const shareData = {
+        title: 'Join and Get Gifts!',
+        text: 'Click this link and get amazing gifts 🎁',
+        url: 'https://example.com/your-link-here' // <-- ඔයාගේ ලින්ක් එක මෙහි දමන්න
+      };
+
+      if (navigator.share) {
+        navigator.share(shareData)
+          .then(() => console.log('Shared successfully'))
+          .catch((err) => console.error('Error sharing:', err));
+      } else {
+        alert("Your device doesn't support sharing 😢");
+      }
+    }
+  </script>
+
+</body>
+</html>
